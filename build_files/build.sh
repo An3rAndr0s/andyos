@@ -24,6 +24,7 @@ dnf5 -y install kernel-cachyos kernel-cachyos-devel-matched --allowerasing
 dnf5 -y copr enable bieszczaders/kernel-cachyos-addons
 rm -rf /usr/lib/systemd/coredump.conf
 dnf5 -y install cachyos-settings scx-scheds scx-tools-git scx-manager ananicy-cpp --allowerasing
+systemctl enable scx_loader.service
 
 ## Experimental: use ADIOS IO scheduler by default on nvme disks
 echo > /etc/udev/rules.d/60-ioschedulers.rules << EOF
@@ -31,6 +32,11 @@ ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", \
     ATTR{queue/scheduler}="adios"
 EOF
 
+sudo mkdir -p /etc/scx_loader
+echo > /etc/scx_loader/config.toml << EOF
+default_sched = "scx_lavd"
+default_mode = "Auto"
+EOF
 
 # restore kernel install
 mv -f 05-rpmostree.install.bak 05-rpmostree.install \

@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM ghcr.io/ublue-os/bluefin-nvidia:stable
+FROM ghcr.io/ublue-os/bluefin:stable
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
@@ -35,9 +35,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build.sh
     
-RUN wget https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-43/ryanabx-cosmic-epoch-fedora-43.repo -O /etc/yum.repos.d/_copr_ryanabx-cosmic.repo
-RUN rpm-ostree install cosmic-desktop
-
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint

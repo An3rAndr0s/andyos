@@ -10,9 +10,13 @@ dnf -y install libvirt virt-manager qemu-kvm flatpak-builder wlr-randr
 
 # User apps
 dnf -y install nautilus kitty mpv obs-studio gnome-terminal
+
+# Nautilus open any terminal extension
 curl -Lo /etc/yum.repos.d/nautilus-open-any-terminal.repo \
   https://copr.fedorainfracloud.org/coprs/monkeygold/nautilus-open-any-terminal/repo/fedora-43/monkeygold-nautilus-open-any-terminal-fedora-43.repo
 dnf install -y nautilus-open-any-terminal
+glib-compile-schemas /usr/share/glib-2.0/schemas
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 
 #### Enable podman
 

@@ -18,6 +18,12 @@ dnf install -y nautilus-open-any-terminal
 glib-compile-schemas /usr/share/glib-2.0/schemas
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 
+
+# Install Niri + Noctalia shell
+curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo -o /etc/yum.repos.d/terra.repo
+rpm-ostree install terra-release
+rpm-ostree install niri noctalia-shell
+
 #### Enable podman
 
 systemctl enable podman.socket

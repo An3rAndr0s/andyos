@@ -22,7 +22,7 @@ gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 # Install Niri + Noctalia shell
 curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo -o /etc/yum.repos.d/terra.repo
 rpm-ostree install terra-release
-rpm-ostree install niri noctalia-shell
+rpm-ostree install niri noctalia-shell lxpolkit
 
 #### Enable podman
 

@@ -11,6 +11,9 @@ dnf -y install libvirt virt-manager qemu-kvm flatpak-builder wlr-randr iotop sys
 # User apps
 dnf -y install nautilus kitty mpv obs-studio gnome-terminal
 
+dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf -y install ffmpeg x264-libs --allowerasing
+
 # Nautilus open any terminal extension
 curl -Lo /etc/yum.repos.d/nautilus-open-any-terminal.repo \
   https://copr.fedorainfracloud.org/coprs/monkeygold/nautilus-open-any-terminal/repo/fedora-43/monkeygold-nautilus-open-any-terminal-fedora-43.repo

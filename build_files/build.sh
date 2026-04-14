@@ -6,7 +6,7 @@ set -ouex pipefail
 sed -i '/^\[main\]/a max_parallel_downloads=10' /etc/dnf/dnf.conf
 
 ## System apps
-dnf -y install libvirt virt-manager qemu-kvm flatpak-builder wlr-randr iotop sysstat
+dnf -y install libvirt virt-manager qemu-kvm flatpak-builder wlr-randr iotop sysstat lxqt-openssh-askpass
 
 # User apps
 dnf -y install nautilus kitty mpv gnome-terminal

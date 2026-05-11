@@ -49,11 +49,18 @@ dnf -y install quickshell dms greetd dms-greeter --allowerasing
 # ln -s /usr/lib/systemd/system/greetd.service /etc/systemd/system/display-manager.service
 ## ABILITARE LE NOTIFICHE: systemctl --user enable --now dms.service
 
+# DEV packages
+# cargo evtest git input-remapper libevdev-devel libinput-utils python3-devel
+
 dnf -y install bitwarden-cli 
 
 #### Enable podman
 
 systemctl enable podman.socket
+
+# Disable Origami tips
+
+sudo mv /etc/profile.d/origami-aliases.sh /etc/profile.d/origami-aliases.sh.bak
 
 ## CLEAN UP
 # Clean up dnf cache to reduce image size

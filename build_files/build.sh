@@ -26,11 +26,11 @@ gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 # Install Niri 
 dnf -y install niri 
 
-# Install Noctalia shell
-curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo -o /etc/yum.repos.d/terra.repo
-dnf -y install terra-release
-dnf -y install noctalia-shell 
-# ABILITARE LE NOTIFICHE: systemctl --user enable --now swaync.service
+# # Install Noctalia shell
+# curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo -o /etc/yum.repos.d/terra.repo
+# dnf -y install terra-release
+# dnf -y install noctalia-shell 
+# # ABILITARE LE NOTIFICHE: systemctl --user enable --now swaync.service
 
 # Install Dank Linux shell
 sudo curl --output-dir "/etc/yum.repos.d/" \
@@ -46,7 +46,7 @@ vt = 1
 user = "greeter"
 command = "dms-greeter --command niri"
 EOF
-rm /etc/systemd/system/display-manager.service
+rm -f /etc/systemd/system/display-manager.service
 ln -s /usr/lib/systemd/system/greetd.service /etc/systemd/system/display-manager.service
 systemctl enable --force greetd.service
 
@@ -58,7 +58,7 @@ cp -rf /ctx/dot_config/niri/config.kdl /etc/skel/.config/niri/
 # DEV packages
 # cargo evtest git input-remapper libevdev-devel libinput-utils python3-devel
 
-dnf -y install bitwarden-cli 
+# dnf -y install bitwarden-cli 
 
 #### Enable podman
 
@@ -67,6 +67,9 @@ systemctl enable podman.socket
 # Disable Origami tips
 
 sudo mv /etc/profile.d/origami-aliases.sh /etc/profile.d/origami-aliases.sh.bak
+
+# Remove COSMIC shell and waybar
+dnf -y remove cosmic-comp cosmic-initial-setup cosmic-settings cosmic-settings-daemon cosmic-store  waybar
 
 ## CLEAN UP
 # Clean up dnf cache to reduce image size

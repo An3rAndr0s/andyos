@@ -67,6 +67,9 @@ systemctl enable podman.socket
 # Remove waybar
 dnf -y remove waybar
 
+# this is needed for some glib applications
+glib-compile-schemas /usr/share/glib-2.0/schemas/
+
 ## CLEAN UP
 # Clean up dnf cache to reduce image size
 dnf5 -y clean all

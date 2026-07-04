@@ -24,7 +24,11 @@ curl -Lo /etc/yum.repos.d/nautilus-open-any-terminal.repo \
 
 
 # Install Niri 
-dnf -y install niri bibata-cursor-theme
+dnf -y install niri 
+
+curl -Lo /etc/yum.repos.d/peterwu.repo \
+  https://copr.fedorainfracloud.org/coprs/peterwu/rendezvous/repo/fedora-$(rpm -E %fedora)/peterwu-rendezvous-fedora-$(rpm -E %fedora).repo
+dnf -y install bibata-cursor-themes
 
 # # Install Noctalia shell
 # curl -fsSL https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo -o /etc/yum.repos.d/terra.repo
@@ -33,7 +37,7 @@ dnf -y install niri bibata-cursor-theme
 # # ABILITARE LE NOTIFICHE: systemctl --user enable --now swaync.service
 
 # Install Dank Linux shell
-sudo curl --output-dir "/etc/yum.repos.d/" \
+curl --output-dir "/etc/yum.repos.d/" \
   --remote-name "https://copr.fedorainfracloud.org/coprs/avengemedia/dms/repo/fedora-$(rpm -E %fedora)/avengemedia-dms-fedora-$(rpm -E %fedora).repo"
 dnf -y install quickshell dms greetd dms-greeter --allowerasing 
 #
@@ -69,6 +73,13 @@ dnf -y remove waybar
 
 # this is needed for some glib applications
 glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+
+# NVIDIA Container Toolkit (repo ufficiale)
+curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
+  -o /etc/yum.repos.d/nvidia-container-toolkit.repo
+dnf -y install nvidia-container-toolkit
+
 
 ## CLEAN UP
 # Clean up dnf cache to reduce image size

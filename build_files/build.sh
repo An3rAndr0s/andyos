@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+dnf -y remove gnome-shell xdg-desktop-portal-gnome
+
 ## DNF5 Speedup
 sed -i '/^\[main\]/a max_parallel_downloads=10' /etc/dnf/dnf.conf
 

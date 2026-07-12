@@ -2,7 +2,7 @@
 
 set -ouex pipefail
 
-dnf -y remove gnome-shell xdg-desktop-portal-gnome
+dnf -y remove gnome-shell 
 dnf -y install pipewire xdg-desktop-portal-wlr
 
 ## DNF5 Speedup

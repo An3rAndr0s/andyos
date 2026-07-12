@@ -3,6 +3,7 @@
 set -ouex pipefail
 
 dnf -y remove gnome-shell xdg-desktop-portal-gnome
+dnf -y install pipewire xdg-desktop-portal-wlr
 
 ## DNF5 Speedup
 sed -i '/^\[main\]/a max_parallel_downloads=10' /etc/dnf/dnf.conf
@@ -26,7 +27,7 @@ curl -Lo /etc/yum.repos.d/nautilus-open-any-terminal.repo \
 
 
 # Install Niri 
-dnf -y install niri 
+dnf -y install niri
 
 curl -Lo /etc/yum.repos.d/peterwu.repo \
   https://copr.fedorainfracloud.org/coprs/peterwu/rendezvous/repo/fedora-$(rpm -E %fedora)/peterwu-rendezvous-fedora-$(rpm -E %fedora).repo

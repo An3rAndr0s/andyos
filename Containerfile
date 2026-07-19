@@ -4,7 +4,8 @@ COPY build_files /
 
 # Base Image
 # FROM ghcr.io/rakuos/rakuos-base-nvidia:latest
-FROM ghcr.io/ublue-os/bazzite-gnome-nvidia:stable
+# FROM ghcr.io/ublue-os/bazzite-gnome-nvidia:stable
+FROM ghcr.io/ublue-os/bluefin-dx:stable
 RUN sed -i 's/^ID=.*/ID=fedora/' /etc/os-release
 
 ## Other possible base images include:

@@ -44,6 +44,11 @@ dnf -y install bibata-cursor-themes
 curl --output-dir "/etc/yum.repos.d/" \
   --remote-name "https://copr.fedorainfracloud.org/coprs/avengemedia/dms/repo/fedora-$(rpm -E %fedora)/avengemedia-dms-fedora-$(rpm -E %fedora).repo"
 dnf -y install quickshell dms greetd dms-greeter --allowerasing 
+
+# Enable DMS for ALL users (global systemd user preset)
+mkdir -p /usr/lib/systemd/user/graphical-session.target.wants
+ln -sf /usr/lib/systemd/user/dms.service /usr/lib/systemd/user/graphical-session.target.wants/dms.service
+
 #
 # Install greetd login manager with dank configuration (still needs some work)
 mkdir -p /etc/greetd/
@@ -80,9 +85,9 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 
 # NVIDIA Container Toolkit (repo ufficiale)
-curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
-  -o /etc/yum.repos.d/nvidia-container-toolkit.repo
-dnf -y install nvidia-container-toolkit
+#curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
+#  -o /etc/yum.repos.d/nvidia-container-toolkit.repo
+#dnf -y install nvidia-container-toolkit
 
 
 ## CLEAN UP

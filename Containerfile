@@ -8,7 +8,7 @@ FROM ghcr.io/ublue-os/bazzite-gnome-nvidia:stable
 RUN sed -i 's/^ID=.*/ID=fedora/' /etc/os-release
 
 ## Other possible base images include:
-# FROM ghcr.io/ublue-os/bazzite:latest
+# FROM ghcr.io/ublue-os/bluefin-dx:stable
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
 # 
 # ... and so on, here are more base images
